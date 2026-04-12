@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Wishlist - Fluid Fleet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#a6bdff",
+                    "outline": "#737784",
+                    "surface-variant": "#dbe2f9",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e9edff",
+                    "secondary-fixed": "#d6e3fb",
+                    "background": "#f9f9ff",
+                    "primary-fixed": "#dae2ff",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001848",
+                    "tertiary": "#004019",
+                    "surface-container-high": "#e0e8ff",
+                    "on-tertiary-container": "#49d872",
+                    "surface-bright": "#f9f9ff",
+                    "on-background": "#141b2c",
+                    "surface-tint": "#0c56d0",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "on-surface-variant": "#434653",
+                    "on-primary-fixed-variant": "#0040a2",
+                    "tertiary-fixed": "#71fe93",
+                    "tertiary-container": "#005a25",
+                    "on-secondary-fixed": "#0f1c2d",
+                    "surface-container-low": "#f1f3ff",
+                    "inverse-on-surface": "#edf0ff",
+                    "secondary-container": "#d6e3fb",
+                    "tertiary-fixed-dim": "#52e079",
+                    "outline-variant": "#c3c6d5",
+                    "primary-container": "#0046b0",
+                    "primary": "#003180",
+                    "surface-dim": "#d2daf0",
+                    "surface": "#f9f9ff",
+                    "on-secondary-container": "#586579",
+                    "inverse-primary": "#b2c5ff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#141b2c",
+                    "surface-container-highest": "#dbe2f9",
+                    "on-tertiary-fixed-variant": "#005322",
+                    "on-tertiary-fixed": "#002109",
+                    "on-secondary-fixed-variant": "#3b485a",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#bac7de",
+                    "inverse-surface": "#293041",
+                    "secondary": "#525f73"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; background-color: #f9f9ff; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .filled-icon { font-variation-settings: 'FILL' 1; }
+        .glass-card { backdrop-filter: blur(24px); background: rgba(249, 249, 255, 0.7); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-surface/70 dark:bg-slate-950/70 backdrop-blur-xl flex justify-between items-center px-6 h-16 w-full shadow-[0_12px_48px_-12px_rgba(20,27,44,0.06)]">
+<div class="flex items-center gap-4">
+<button class="material-symbols-outlined text-blue-900 dark:text-blue-400 active:scale-95 transition-transform" data-icon="menu">menu</button>
+<span class="font-['Manrope'] font-bold tracking-wide text-xl font-black text-blue-900 dark:text-blue-100">Fluid Fleet</span>
+</div>
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Profile" data-alt="close-up portrait of a professional man with a friendly expression in clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBSZkjNkPfQMZhkHqsMvIep7tvtIgoIR4PDicExltU3vmqWvNXBW_8YHRcHCKgBOOfJQvE_tLlSw0645FY1xQBiMr-WmVxciz-juZD2AZfTUhicQmS0AaW9BstWhAiy8x1n8iqzkMdhIYxNHOWpZF19Y6879ziNrHK8pzIss25Stw_OQct8ZsecSzCi2G25_gjtIYmfRZfJI9r_d1os6A3JCE2pRSk_JeRI3PMib9EjhzATBPfYJ3geVZkF8ErYpgrRJxq_lEXeK_Q"/>
+</div>
+</div>
+</header>
+<main class="pt-24 px-6 max-w-7xl mx-auto">
+<!-- Header Section -->
+<div class="mb-12">
+<h1 class="text-4xl md:text-5xl font-extrabold text-on-surface tracking-tight mb-2">Pilihan Anda</h1>
+<p class="text-secondary font-medium">Temukan kembali armada premium yang telah Anda simpan.</p>
+</div>
+<!-- Wishlist Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+<!-- Item 1 -->
+<div class="group relative bg-surface-container-low rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[0_24px_48px_-12px_rgba(0,49,128,0.12)]">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="front profile of a sleek electric blue sports sedan parked in a minimalist concrete architectural space with soft daylight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4ZhrjPCbV0lUcFM3q8rlK2-EykHKnNz_OpNAelc5Qvgh_cYe-dJs0yOJmCkhkJ5gBBe0x--4sMVyuWxdB58jjMG-SRmdVTc5TP8nzVykH3CnwD5d8FG5JKCvqbJ9I4qGIs1MuvB199XSN4h6rE9rADaasAo1gPwv-kf91QyJJk04AlLqueU8rNzQm2OPgxSjJtH-h-YpeYXWI9UOW3V2nPIVFhFa5CXGSQxTlAI792Vl3Vt3HNin3M_NYpxW1G6HFLTTwl9jVeUI"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="bg-surface/90 backdrop-blur-md p-3 rounded-2xl text-error hover:bg-error hover:text-on-error transition-all duration-300 shadow-sm active:scale-90">
+<span class="material-symbols-outlined filled-icon" data-icon="heart_minus" style="font-variation-settings: 'FILL' 1;">heart_minus</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full">Tersedia</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Luminary X</h3>
+<p class="text-secondary text-sm font-medium">Electric Luxury Sedan</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary uppercase tracking-tighter">Per Hari</p>
+<p class="text-xl font-black text-on-surface">Rp 2.450k</p>
+</div>
+</div>
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-2xl shadow-lg active:scale-95 transition-all">
+                        Sewa Sekarang
+                    </button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="group relative bg-surface-container-low rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[0_24px_48px_-12px_rgba(0,49,128,0.12)]">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="stunning dark blue high-performance suv parked on a scenic mountain road at dusk with city lights in the distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBccOQEONfTotAKkpXBZoSyYkWJiXvi9LEcoEbPR06CmTcZfF7-sW37dWbrSPSFOYdv9nwRlC9BFAGcVwqv05gDesNIb1Kn6-ddUdy0IpJJCbzSCTQk4BiHoCiq4FWbiHrfCrD8KpMNV8L-IIZJ9SuV0XIA0T7pLIYDRuGFFyWRc-fcjEpA9k0zTDpvMLPdDTeP--YoNYqqjamslTbu2DI37OkIAplnBfXheaplmMCx761Z23VHJ6xccNhW0E5ueNIerkdPqv_7Ijw"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="bg-surface/90 backdrop-blur-md p-3 rounded-2xl text-error hover:bg-error hover:text-on-error transition-all duration-300 shadow-sm active:scale-90">
+<span class="material-symbols-outlined filled-icon" data-icon="heart_minus" style="font-variation-settings: 'FILL' 1;">heart_minus</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+<span class="px-3 py-1 bg-secondary-container text-on-secondary-container text-[10px] font-bold uppercase tracking-widest rounded-full">Dalam Perawatan</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Apex SUV</h3>
+<p class="text-secondary text-sm font-medium">All-Terrain Performance</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary uppercase tracking-tighter">Per Hari</p>
+<p class="text-xl font-black text-on-surface">Rp 3.100k</p>
+</div>
+</div>
+<button class="w-full py-4 bg-outline-variant text-on-surface-variant font-bold rounded-2xl cursor-not-allowed" disabled="">
+                        Tidak Tersedia
+                    </button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="group relative bg-surface-container-low rounded-3xl overflow-hidden transition-all duration-500 hover:shadow-[0_24px_48px_-12px_rgba(0,49,128,0.12)]">
+<div class="relative h-64 overflow-hidden">
+<img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" data-alt="modern metallic blue luxury convertible sports car in a high-end showroom with dramatic spotlights and reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBgCGOfqx4jI6ksKzRe7gdkAybp7eHCLxZQ66oVaZwVijuW4vv63lb-RgwmWA7ZZgKpfPkP_Ulk8QJcLGsr0rKF1_OLfgNhGj9Mi4R3WMDVkbyvAfoHnwfXEQMdzv4wo0GvDqcRDkVkg6SnsTiPKzBcpRKzsivTRjt0JKGXqSlKWTT50nLDSPYOCosfZJuMhgxUaofDQt2EoosRyeOXCQLKhODi8e3PSZpAfCreRWLAkAuNJwRCp3HEK4rmpVpk4vsjkThWSryfAWo"/>
+<div class="absolute top-4 right-4 z-10">
+<button class="bg-surface/90 backdrop-blur-md p-3 rounded-2xl text-error hover:bg-error hover:text-on-error transition-all duration-300 shadow-sm active:scale-90">
+<span class="material-symbols-outlined filled-icon" data-icon="heart_minus" style="font-variation-settings: 'FILL' 1;">heart_minus</span>
+</button>
+</div>
+<div class="absolute bottom-0 left-0 right-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+<span class="px-3 py-1 bg-tertiary-fixed text-on-tertiary-fixed text-[10px] font-bold uppercase tracking-widest rounded-full">Tersedia</span>
+</div>
+</div>
+<div class="p-6">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-1">Velocita S</h3>
+<p class="text-secondary text-sm font-medium">Grand Tourer</p>
+</div>
+<div class="text-right">
+<p class="text-xs font-bold text-primary uppercase tracking-tighter">Per Hari</p>
+<p class="text-xl font-black text-on-surface">Rp 5.800k</p>
+</div>
+</div>
+<button class="w-full py-4 bg-gradient-to-br from-primary to-primary-container text-on-primary font-bold rounded-2xl shadow-lg active:scale-95 transition-all">
+                        Sewa Sekarang
+                    </button>
+</div>
+</div>
+</div>
+<!-- Recommendation Section -->
+<section class="mt-20 mb-10">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold text-on-surface">Mungkin Anda Suka</h2>
+<a class="text-primary font-bold text-sm uppercase tracking-wider flex items-center gap-2" href="#">
+                    Lihat Semua <span class="material-symbols-outlined text-sm" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="flex gap-6 overflow-x-auto pb-8 snap-x no-scrollbar">
+<div class="min-w-[280px] bg-surface-container-high p-4 rounded-[2rem] snap-start flex items-center gap-4">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="side view of a premium blue luxury sedan wheel and body detail" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD4gTAAOtG5S9qkDUXrzhaFAzD64QXNhFGXaz4RhQtYZuPVuCYKeGgG8opMhyQV_9w060E8RaA7WzuMDC82GCwXx_cTs_9q-ToUV-Hv77OGnzphq6K27QhSmna8EOkJ1e0PDiDgMo3gRjpnvHFkxdXmo8u6K0ZtGinY4KX-ouEfb0xherXOKyEKw17h-PyM5VkGBmWiYnQAp0WLEW5XzBqIgUwkfOQgWV80x8e8X7rHV7Yc7jKCOw8H0kWiipO_xmLHzGF9fMJwMTo"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Titan Hybrid</h4>
+<p class="text-xs text-secondary mb-1">SUV Premium</p>
+<p class="text-sm font-black text-primary">Rp 1.900k</p>
+</div>
+</div>
+<div class="min-w-[280px] bg-surface-container-high p-4 rounded-[2rem] snap-start flex items-center gap-4">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="rear view of a luxury italian sports car in deep blue metallic paint" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDyWh3-r1A4S-N0_g9_LrAx3eg3TNhGakxPySJDs2QysFcvcs_yepyMXbO-6gdOia3hAJ9kur4YF0_Ze_LTcOmeW7d_oPkcD-Wkm6GMtT_jlDuorPQJrRFJ931v-dQ4im_d8Bjgtwzz5p3JLKZxm88WJeNBvmqhy_3TtbxmxILR9JtznXfX5OBi12_KNw8WaLSFTc-yM6XXXICTJtDwXrVt8pUrs69LcvteAx2xsLIlqFbF2oX03n1jGMBqVpo5VDTaPDyl7UxP_M4"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Veloce Spider</h4>
+<p class="text-xs text-secondary mb-1">Convertible</p>
+<p class="text-sm font-black text-primary">Rp 7.200k</p>
+</div>
+</div>
+<div class="min-w-[280px] bg-surface-container-high p-4 rounded-[2rem] snap-start flex items-center gap-4">
+<div class="w-20 h-20 rounded-2xl overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="front view of a high-end luxury car grille and headlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBW6M-Nf52-R8fnqqZfkQVCLAikvwLrjpP4AGeEoz4KzuKAx8WsZ6qHdPqqxCHuEnYLCDEXAdVGywIvpkQ7iWwG4QpADFK9olLsPltMTzzc1DxJiiMqR5MoMfoDebgLKCwKo8UQZwMMfNj9lAJsV8pjTIQYsRueeK_PREchLodfy_VtVFxHd17DxXIIYmFQTpptvOhLEmYnRqljqQDXVYa0a6C_WpuE7s6IVfPyZ7EuF1zbNZTzC6mcun4VWAvVuL5ZQNVPrwFRyOU"/>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Monarch L</h4>
+<p class="text-xs text-secondary mb-1">Executive Sedan</p>
+<p class="text-sm font-black text-primary">Rp 4.500k</p>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-surface/70 dark:bg-slate-950/70 backdrop-blur-xl rounded-t-3xl shadow-[0_-8px_24px_-4px_rgba(20,27,44,0.04)]">
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1.5 hover:text-blue-700 active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="directions_car">directions_car</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-tighter mt-1">Katalog</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1.5 hover:text-blue-700 active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="receipt_long">receipt_long</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-tighter mt-1">Pesanan</span>
+</a>
+<a class="flex flex-col items-center justify-center text-blue-900 dark:text-blue-300 bg-blue-50 dark:bg-blue-900/30 rounded-2xl px-4 py-1.5 active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined filled-icon" data-icon="favorite" style="font-variation-settings: 'FILL' 1;">favorite</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-tighter mt-1">Favorit</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-400 dark:text-slate-500 px-4 py-1.5 hover:text-blue-700 active:scale-90 transition-all duration-300" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-[10px] font-semibold uppercase tracking-tighter mt-1">Profil</span>
+</a>
+</nav>
+</body></html>

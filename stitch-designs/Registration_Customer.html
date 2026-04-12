@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Registration | Fluid Fleet</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-container": "#a6bdff",
+                    "outline": "#737784",
+                    "surface-variant": "#dbe2f9",
+                    "on-error": "#ffffff",
+                    "surface-container-lowest": "#ffffff",
+                    "surface-container": "#e9edff",
+                    "secondary-fixed": "#d6e3fb",
+                    "background": "#f9f9ff",
+                    "primary-fixed": "#dae2ff",
+                    "error-container": "#ffdad6",
+                    "error": "#ba1a1a",
+                    "on-primary-fixed": "#001848",
+                    "tertiary": "#004019",
+                    "surface-container-high": "#e0e8ff",
+                    "on-tertiary-container": "#49d872",
+                    "surface-bright": "#f9f9ff",
+                    "on-background": "#141b2c",
+                    "surface-tint": "#0c56d0",
+                    "on-primary": "#ffffff",
+                    "primary-fixed-dim": "#b2c5ff",
+                    "on-surface-variant": "#434653",
+                    "on-primary-fixed-variant": "#0040a2",
+                    "tertiary-fixed": "#71fe93",
+                    "tertiary-container": "#005a25",
+                    "on-secondary-fixed": "#0f1c2d",
+                    "surface-container-low": "#f1f3ff",
+                    "inverse-on-surface": "#edf0ff",
+                    "secondary-container": "#d6e3fb",
+                    "tertiary-fixed-dim": "#52e079",
+                    "outline-variant": "#c3c6d5",
+                    "primary-container": "#0046b0",
+                    "primary": "#003180",
+                    "surface-dim": "#d2daf0",
+                    "surface": "#f9f9ff",
+                    "on-secondary-container": "#586579",
+                    "inverse-primary": "#b2c5ff",
+                    "on-secondary": "#ffffff",
+                    "on-error-container": "#93000a",
+                    "on-surface": "#141b2c",
+                    "surface-container-highest": "#dbe2f9",
+                    "on-tertiary-fixed-variant": "#005322",
+                    "on-tertiary-fixed": "#002109",
+                    "on-secondary-fixed-variant": "#3b485a",
+                    "on-tertiary": "#ffffff",
+                    "secondary-fixed-dim": "#bac7de",
+                    "inverse-surface": "#293041",
+                    "secondary": "#525f73"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-effect {
+            background: rgba(249, 249, 255, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface font-body selection:bg-primary-fixed selection:text-on-primary-fixed">
+<div class="min-h-screen flex flex-col md:flex-row">
+<div class="hidden md:flex md:w-1/2 lg:w-3/5 bg-primary overflow-hidden relative items-center justify-center">
+<div class="absolute inset-0 z-0">
+<img alt="Sleek silver high-end sports car in a minimalist architectural garage with dramatic lighting and deep shadows" class="w-full h-full object-cover opacity-60 mix-blend-overlay" data-alt="Sleek silver high-end sports car in a minimalist architectural garage with dramatic lighting and deep shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCIPwnXhdiFul-K3Rc8uBGd0XMxs2SrmLK5FBN_UPcynnK8mgD-c42B2POPe4gueOBnfG81yYi3MwAObPJqZmQilDYwOwvAv1pOg1MMoC0Czau0LIdHgaQfkhTBPC8onXO294d67U9wsL7pxS1ugYr_olc7qw6nxzKifW9q53t8cJAprcDwkw6VJNjXPXGFACoeo0UzS2GDac2_INcTCgOEDbNLHSMuCL77OobcXw8WlJk3NgLKmuzYry9t_sVqb3V-8y1PeiwMMKo"/>
+</div>
+<div class="relative z-10 p-12 lg:p-24 max-w-2xl">
+<div class="mb-8 inline-flex items-center gap-2 bg-on-primary/10 backdrop-blur-md px-4 py-2 rounded-full border border-on-primary/20">
+<span class="material-symbols-outlined text-tertiary-fixed text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span class="text-xs font-bold uppercase tracking-widest text-on-primary font-label">The Fleet Authority</span>
+</div>
+<h1 class="text-5xl lg:text-7xl font-headline font-black text-on-primary tracking-tight leading-none mb-6">
+                    Elevate Your <br/><span class="text-primary-fixed">Journey.</span>
+</h1>
+<p class="text-xl text-primary-fixed-dim font-body leading-relaxed max-w-lg">
+                    Join the exclusive RCMS community. Manage your elite fleet with precision editorial tools and unparalleled control.
+                </p>
+<div class="mt-12 grid grid-cols-2 gap-8">
+<div>
+<p class="text-3xl font-headline font-bold text-on-primary">500+</p>
+<p class="text-sm text-primary-fixed-dim uppercase tracking-widest font-semibold mt-1">Luxury Assets</p>
+</div>
+<div>
+<p class="text-3xl font-headline font-bold text-on-primary">24/7</p>
+<p class="text-sm text-primary-fixed-dim uppercase tracking-widest font-semibold mt-1">Concierge Support</p>
+</div>
+</div>
+</div>
+</div>
+<div class="flex-1 flex items-center justify-center p-6 md:p-12 lg:p-24 bg-surface relative">
+<div class="w-full max-w-md space-y-10">
+<div class="md:hidden flex justify-center mb-8">
+<span class="text-3xl font-headline font-black text-primary tracking-wide">Fluid Fleet</span>
+</div>
+<div class="space-y-3">
+<h2 class="text-4xl font-headline font-extrabold text-on-surface tracking-tight">Create Account</h2>
+<p class="text-on-surface-variant font-medium">Enter your details to register with Fluid Fleet.</p>
+</div>
+<form class="space-y-6">
+<div class="space-y-5">
+<div class="relative group">
+<label class="block text-xs font-bold text-outline uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-primary" for="full_name">Full Name</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">person</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" id="full_name" placeholder="John Doe" type="text"/>
+</div>
+</div>
+<div class="relative group">
+<label class="block text-xs font-bold text-outline uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-primary" for="email">Email Address</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">mail</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" id="email" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="relative group">
+<label class="block text-xs font-bold text-outline uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-primary" for="phone">Phone Number</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">call</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 pl-12 pr-4 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" id="phone" placeholder="+1 (555) 000-0000" type="tel"/>
+</div>
+</div>
+<div class="relative group">
+<label class="block text-xs font-bold text-outline uppercase tracking-widest mb-1.5 ml-1 transition-colors group-focus-within:text-primary" for="password">Password</label>
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-4 text-outline group-focus-within:text-primary transition-colors">lock</span>
+<input class="w-full bg-surface-container-high border-none rounded-xl py-4 pl-12 pr-12 text-on-surface placeholder:text-outline/50 focus:ring-2 focus:ring-primary/20 focus:bg-surface-container-lowest transition-all" id="password" placeholder="••••••••" type="password"/>
+<button class="absolute right-4 text-outline hover:text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined">visibility</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex items-start gap-3 px-1">
+<input class="mt-1 w-5 h-5 rounded-md border-outline-variant text-primary focus:ring-primary/20 transition-all bg-surface-container-high" id="terms" type="checkbox"/>
+<label class="text-sm text-on-surface-variant leading-tight" for="terms">
+                            I agree to the <a class="text-primary font-bold hover:underline" href="#">Terms of Service</a> and <a class="text-primary font-bold hover:underline" href="#">Privacy Policy</a>.
+                        </label>
+</div>
+<button class="w-full bg-gradient-to-br from-primary to-primary-container text-on-primary font-headline font-bold py-5 rounded-xl shadow-[0_12px_24px_-8px_rgba(0,49,128,0.3)] hover:shadow-[0_16px_32px_-8px_rgba(0,49,128,0.4)] hover:scale-[1.01] active:scale-[0.98] transition-all flex items-center justify-center gap-2 group" type="submit">
+                        Create Account
+                        <span class="material-symbols-outlined text-xl group-hover:translate-x-1 transition-transform">arrow_forward</span>
+</button>
+</form>
+<div class="pt-6 border-t border-surface-container-high text-center">
+<p class="text-on-surface-variant font-medium">
+                        Already have an account? 
+                        <a class="text-primary font-bold hover:text-on-primary-fixed-variant transition-colors ml-1" href="#">Login</a>
+</p>
+</div>
+<div class="grid grid-cols-2 gap-4 pt-4">
+<button class="flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-surface-container text-on-surface font-semibold text-sm hover:bg-surface-container-high transition-colors">
+<img alt="Google Logo" class="w-5 h-5" data-alt="Official Google G color logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBrf2NZmMF5rIxXNBYoEVQQ51CqNcAQaRqml_mWros_0Wof3rSgDKxbughHsrH5baB_cCZAKrikam3qAqjLmHG19RTkmwqMDI-Hle-Dt4IpC9PLFkBpWkxso3rxR6qokTUXjY5w3zm8Bf8XILLaS8geMyrPZ4kaLlycG0wPGgLfpiaGxRihSPAJcHk75h8-57N4yEEDTneUGApH4aekETzhFo8c_YN243tXfs7ZND5HV-tJ5kV4NuPxvEawQRjTJtUBfJMti5v81QE"/>
+                        Google
+                    </button>
+<button class="flex items-center justify-center gap-3 py-3 px-4 rounded-xl bg-surface-container text-on-surface font-semibold text-sm hover:bg-surface-container-high transition-colors">
+<img alt="Apple Logo" class="w-5 h-5" data-alt="Minimalist monochrome Apple logo icon" src="https://lh3.googleusercontent.com/aida-public/AB6AXuARwjakq-r4tN3k-lgSvp_Cw1osq12fp5SpZYLma4j4bZiM5zcE022GNfHMjb4LJ4qOpvPOyUcBU1vFVuE0dMlqbQs8WAE10n5rOksO_58cS_o6qjggDtk_OaTGLFmikEQAdvDKj2CzJsUe-BdWUX3qzeC1KvztgeQVDHuzSbQkc_vUptiEbo4rl8qN9jxPKh2bk0Nueh4u1Ab4K8C3WkJW_A2cUaf43Hx0ba-Rnl5k5j901ziEk9kJ90zdaSJ-19Vle5Qi-hXQ_n4"/>
+                        Apple
+                    </button>
+</div>
+</div>
+</div>
+</div>
+<!-- Background Decoration for Mobile -->
+<div class="md:hidden fixed -bottom-24 -left-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+<div class="md:hidden fixed top-0 right-0 w-48 h-48 bg-tertiary-fixed/10 rounded-full blur-3xl pointer-events-none"></div>
+</body></html>

@@ -1,27 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─────────────────────────────────────────────
+   Material Symbols Config
+───────────────────────────────────────────── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-size: 24px;
+  line-height: 1;
+  user-select: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.material-symbols-outlined.filled {
+  font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+/* ─────────────────────────────────────────────
+   Base Styles
+───────────────────────────────────────────── */
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-surface font-body text-on-surface antialiased;
+    min-height: 100dvh;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-headline;
+  }
+
+  /* Prevent iOS auto-zoom on inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
+
+  /* Scrollbar hide utility */
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+/* ─────────────────────────────────────────────
+   Component Utilities
+───────────────────────────────────────────── */
+@layer components {
+  /* Glass Effect (mobile headers, cards) */
+  .glass-effect {
+    background: rgba(249, 249, 255, 0.7);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+
+  /* Admin glass */
+  .glass-white {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  /* Card Styles */
+  .card {
+    @apply bg-surface-container-lowest rounded-2xl shadow-card;
+  }
+
+  .card-hover {
+    @apply card transition-all hover:shadow-card-hover hover:-translate-y-0.5;
+  }
+
+  /* Button Primary */
+  .btn-primary {
+    @apply bg-gradient-to-br from-primary via-primary-container to-on-primary-fixed text-white
+           px-6 py-3.5 rounded-full font-bold text-sm tracking-wide
+           shadow-[0_4px_14px_0_rgba(0,49,128,0.39)] hover:shadow-[0_6px_20px_rgba(0,49,128,0.23)] 
+           hover:-translate-y-0.5 active:scale-[0.97] active:translate-y-0 transition-all duration-200
+           disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 disabled:hover:shadow-none;
+  }
+
+  /* Button Secondary */
+  .btn-secondary {
+    @apply bg-surface-container-lowest text-on-surface border-2 border-outline-variant/30
+           px-6 py-3.5 rounded-full font-bold text-sm tracking-wide
+           hover:bg-surface hover:border-outline-variant/50 hover:-translate-y-0.5 hover:shadow-sm
+           active:scale-[0.97] active:translate-y-0 transition-all duration-200;
+  }
+
+  /* Button Ghost */
+  .btn-ghost {
+    @apply text-primary px-4 py-2.5 rounded-full font-bold text-sm tracking-wide
+           hover:bg-primary/10 active:scale-[0.97] transition-all duration-200;
+  }
+
+  /* Input Field */
+  .input-field {
+    @apply w-full px-4 py-4 bg-surface-container-low border border-outline-variant/30
+           rounded-xl text-on-surface text-base
+           focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary/50
+           transition-all placeholder:text-outline;
+  }
+
+  /* Label */
+  .input-label {
+    @apply text-xs font-semibold text-secondary uppercase tracking-wider ml-1 mb-1;
+  }
+
+  /* Status Badge */
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-bold;
+  }
+
+  .badge-available {
+    @apply badge bg-tertiary-fixed text-on-tertiary-fixed;
+  }
+
+  .badge-rented {
+    @apply badge bg-primary-fixed text-on-primary-fixed;
+  }
+
+  .badge-service {
+    @apply badge bg-yellow-100 text-yellow-800;
+  }
+
+  .badge-blocked {
+    @apply badge bg-error-container text-on-error-container;
+  }
+
+  .badge-pending {
+    @apply badge bg-orange-100 text-orange-800;
+  }
+
+  .badge-approved {
+    @apply badge bg-tertiary-fixed text-on-tertiary-fixed;
+  }
+
+  .badge-rejected {
+    @apply badge bg-error-container text-on-error-container;
+  }
+
+  /* KPI Card (Admin/Owner) */
+  .kpi-card {
+    @apply bg-surface-container-lowest rounded-2xl p-5 shadow-card-lg;
+  }
+
+  /* Section Header */
+  .section-header {
+    @apply font-headline text-2xl font-extrabold text-on-surface tracking-tight;
+  }
+
+  /* Price Display */
+  .price-display {
+    @apply font-headline text-xl font-black text-primary;
+  }
+
+  .price-small {
+    @apply text-sm font-medium text-on-surface-variant;
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* ─────────────────────────────────────────────
+   Bottom Navigation Mobile Safe Area
+───────────────────────────────────────────── */
+.bottom-nav-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* ─────────────────────────────────────────────
+   Loading Skeleton
+───────────────────────────────────────────── */
+.skeleton {
+  @apply bg-surface-container animate-pulse rounded-xl;
+}
+
+/* ─────────────────────────────────────────────
+   Admin Sidebar
+───────────────────────────────────────────── */
+.admin-layout {
+  @apply flex min-h-screen bg-surface;
+}
+
+.admin-sidebar {
+  @apply fixed left-0 top-0 h-screen w-64 bg-surface-container-low 
+         flex flex-col p-4 space-y-1 z-50 border-r border-outline-variant/20;
+}
+
+.admin-content {
+  @apply ml-64 flex-1 min-h-screen;
+}
+
+.admin-topbar {
+  @apply sticky top-0 z-40 glass-white border-b border-outline-variant/20 
+         h-16 flex items-center px-6 gap-4;
+}
+
+.nav-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-150
+         text-on-surface-variant font-label text-sm font-medium
+         hover:bg-surface-container hover:text-on-surface;
+}
+
+.nav-item-active {
+  @apply bg-surface-container-lowest text-primary font-semibold shadow-card;
 }

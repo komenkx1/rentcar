@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>RCMS - Vehicle Details</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-error": "#ffffff",
+                        "on-background": "#141b2c",
+                        "on-primary-fixed-variant": "#0040a2",
+                        "tertiary": "#004019",
+                        "secondary-fixed": "#d6e3fb",
+                        "inverse-primary": "#b2c5ff",
+                        "tertiary-fixed": "#71fe93",
+                        "secondary-fixed-dim": "#bac7de",
+                        "primary": "#003180",
+                        "outline-variant": "#c3c6d5",
+                        "background": "#f9f9ff",
+                        "on-secondary-fixed-variant": "#3b485a",
+                        "outline": "#737784",
+                        "secondary": "#525f73",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#edf0ff",
+                        "surface-container-low": "#f1f3ff",
+                        "error": "#ba1a1a",
+                        "surface-container": "#e9edff",
+                        "surface-dim": "#d2daf0",
+                        "surface-container-high": "#e0e8ff",
+                        "tertiary-fixed-dim": "#52e079",
+                        "on-primary-fixed": "#001848",
+                        "surface-tint": "#0c56d0",
+                        "on-tertiary": "#ffffff",
+                        "tertiary-container": "#005a25",
+                        "surface-bright": "#f9f9ff",
+                        "surface-variant": "#dbe2f9",
+                        "on-secondary-fixed": "#0f1c2d",
+                        "on-error-container": "#93000a",
+                        "on-tertiary-fixed": "#002109",
+                        "on-tertiary-container": "#49d872",
+                        "on-primary-container": "#a6bdff",
+                        "surface-container-highest": "#dbe2f9",
+                        "primary-container": "#0046b0",
+                        "on-tertiary-fixed-variant": "#005322",
+                        "primary-fixed-dim": "#b2c5ff",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#141b2c",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#434653",
+                        "inverse-surface": "#293041",
+                        "secondary-container": "#d6e3fb",
+                        "on-secondary-container": "#586579",
+                        "primary-fixed": "#dae2ff",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-surface font-body text-on-surface selection:bg-primary-container">
+<!-- Top AppBar (Mobile Sub-page variant - No Shell Borders) -->
+<header class="fixed top-0 w-full z-50 bg-white/70 backdrop-blur-xl h-16 flex items-center justify-between px-6">
+<div class="flex items-center gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full active:scale-95 transition-all hover:bg-surface-container-high" onclick="window.location.href='{{DATA:SCREEN:SCREEN_9}}'">
+<span class="material-symbols-outlined text-on-surface">arrow_back</span>
+</button>
+<h1 class="font-headline font-bold text-lg tracking-tight text-primary">Vehicle Details</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-on-surface">share</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high">
+<span class="material-symbols-outlined text-on-surface">favorite</span>
+</button>
+</div>
+</header>
+<main class="pb-32 pt-16">
+<!-- Image Carousel -->
+<section class="relative w-full aspect-[4/3] bg-surface-container overflow-hidden">
+<div class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar h-full">
+<div class="flex-none w-full h-full snap-start">
+<img alt="Toyota Avanza Exterior" class="w-full h-full object-cover" data-alt="Sleek silver modern MPV Toyota Avanza 2022 parked on a clean suburban driveway with soft morning sunlight reflections" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAf28Nqpd1ktAat2n3UhMV493yPYUPuq20oIIKNfXPTI1veK0eUUJvIUuUaFSQq_jEUMz2rKpcaF90NWwtQ-OHvWT8O3PzA2fxgHQW2mI6Wb1gzsOS3kRJe_X1_IRNdPEcZcyQw9GNGEfi_-zaTFFqfZ66e3Bjht7_ah2nsnJ_LhTEQKdVnW3MHW7f1Q5JIwjnu7RSx_0zOs39K-LRycJAdaGQ7JtiGyQCA7qpi_OIQWo-gngC8hxN-nMF6YmLZA5JxpVIvNn5oXtQ"/>
+</div>
+<div class="flex-none w-full h-full snap-start">
+<img alt="Toyota Avanza Interior" class="w-full h-full object-cover" data-alt="Interior shot of a modern 7-seater car dashboard with leather steering wheel and digital display in soft focus" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPhz7hNk_8KiATVLLZuJODM0bB9_SZMr1Px-_Hkg6eSThQN16v9OvBsAu0D-pt8dMSYjOz9sTbZEUiPuS0LFJ_8IoKdXzaNAZDpeJybKK4AuGlKhWoLm26Z7Ic3zOHhRlBo36zEn8_eWASILqA9rkDV6EHO2tHPaZ_OyB3gIA83mQFjzEIiawEuHRQJ_7bn7sDBPeQjcLpMDg2Qq-1-bTZnXXwTxL2si1FCRHa59MdJPY_z_qEYuN7DbZh5VuYQ6ONI6ZECU3UiQU"/>
+</div>
+<div class="flex-none w-full h-full snap-start">
+<img alt="Vehicle Details Rear" class="w-full h-full object-cover" data-alt="Close up of a modern silver car's rear LED headlight and polished trunk emblem in dramatic lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLyQVdRlyVWz7OjHplWEvomXq0_W2p8jNk9zdPV6zr40et2OqQu7ALvPD4tFqhGCx6povHUdO6X9hNhSqPToopwG49caABEzP1hIeN9DBRu5v1PGK9sPM2itLuqFzr6Q9khvIeZZ7SkMFxPK4jWbAIHucHHqtxCPIXjV9Wjy_zzp4ibmao9xkQn2fjthDRAjrPN5CiFFUdRU_UeUGDXrT_5_lUk75dCvMMC9xfcZEHJSfFfFxZ9mFUQlYa_OqwqM_HKUdshryYz14"/>
+</div>
+</div>
+<!-- Pagination Indicator -->
+<div class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-1.5 bg-on-surface/10 backdrop-blur-md px-3 py-1.5 rounded-full">
+<div class="w-2 h-2 rounded-full bg-primary"></div>
+<div class="w-2 h-2 rounded-full bg-on-surface/20"></div>
+<div class="w-2 h-2 rounded-full bg-on-surface/20"></div>
+</div>
+<!-- Status Badge -->
+<div class="absolute top-6 right-6">
+<div class="flex items-center gap-1.5 bg-tertiary-fixed text-on-tertiary-fixed px-3 py-1 rounded-full font-label text-xs font-bold uppercase tracking-wider">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-fixed"></span>
+                    Available
+                </div>
+</div>
+</section>
+<!-- Vehicle Header -->
+<section class="px-6 py-8">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h2 class="font-headline text-3xl font-extrabold tracking-tight text-on-surface">Toyota Avanza 2022</h2>
+<div class="flex items-center gap-2 mt-1">
+<span class="bg-secondary-container text-on-secondary-container px-2.5 py-0.5 rounded-lg text-xs font-bold uppercase tracking-wide">MPV</span>
+<div class="flex items-center text-primary font-bold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="text-sm ml-1">4.8</span>
+<span class="text-outline text-xs font-normal ml-1">(124 Reviews)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Key Specs Grid (Bento Style) - Updated: Bag/Tas removed, Seats, Trans, Fuel, Year retained -->
+<div class="grid grid-cols-2 gap-3 mt-6">
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">event_seat</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline font-bold leading-none mb-1">Seats</p>
+<p class="font-bold text-on-surface">7 Seats</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">settings_input_component</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline font-bold leading-none mb-1">Trans</p>
+<p class="font-bold text-on-surface">Automatic</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">local_gas_station</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline font-bold leading-none mb-1">Fuel</p>
+<p class="font-bold text-on-surface">Bensin</p>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-white flex items-center justify-center text-primary shadow-sm">
+<span class="material-symbols-outlined">calendar_today</span>
+</div>
+<div>
+<p class="text-[10px] uppercase tracking-widest text-outline font-bold leading-none mb-1">Year</p>
+<p class="font-bold text-on-surface">2022</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Rental Options Section -->
+<section class="px-6 pb-8">
+<h3 class="font-headline text-xl font-bold mb-4">Opsi Sewa</h3>
+<div class="flex flex-col gap-4">
+<!-- Option Card: Self-Drive -->
+<div class="relative bg-surface-container-lowest p-5 rounded-3xl border-2 border-primary shadow-sm">
+<div class="absolute -top-3 right-6 bg-primary text-white text-[10px] font-black px-3 py-1 rounded-full uppercase tracking-widest">Recommended</div>
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">key</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Lepas Kunci</h4>
+<p class="text-xs text-outline font-medium">Self-Drive</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary font-black text-xl leading-none">Rp 350k</p>
+<p class="text-[10px] text-outline font-bold uppercase mt-1">Per Day</p>
+</div>
+</div>
+</div>
+<!-- Option Card: With Driver -->
+<div class="bg-surface-container-low p-5 rounded-3xl">
+<div class="flex justify-between items-center">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-white flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined">person</span>
+</div>
+<div>
+<h4 class="font-bold text-on-surface">Dengan Sopir</h4>
+<p class="text-xs text-outline font-medium">With Professional Driver</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-on-surface font-black text-xl leading-none">Rp 550k</p>
+<p class="text-[10px] text-outline font-bold uppercase mt-1">Per Day</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Availability / Calendar Section -->
+<section class="px-6 pb-12">
+<h3 class="font-headline text-xl font-bold mb-4">Pilih Tanggal</h3>
+<div class="bg-surface-container-low p-6 rounded-3xl">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">calendar_month</span>
+<span class="font-bold text-on-surface">October 2023</span>
+</div>
+<div class="flex gap-2">
+<button class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-sm">chevron_left</span></button>
+<button class="w-8 h-8 rounded-full bg-white flex items-center justify-center shadow-sm"><span class="material-symbols-outlined text-sm">chevron_right</span></button>
+</div>
+</div>
+<div class="grid grid-cols-7 gap-y-4 text-center">
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">S</span>
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">M</span>
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">T</span>
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">W</span>
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">T</span>
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">F</span>
+<span class="text-[10px] font-black text-outline uppercase tracking-widest">S</span>
+<!-- Calendar placeholder days -->
+<span class="text-sm font-medium text-outline/30">28</span>
+<span class="text-sm font-medium text-outline/30">29</span>
+<span class="text-sm font-medium text-outline/30">30</span>
+<span class="text-sm font-bold text-on-surface">1</span>
+<span class="text-sm font-bold text-on-surface">2</span>
+<span class="text-sm font-bold text-on-surface">3</span>
+<span class="text-sm font-bold text-on-surface">4</span>
+<span class="relative text-sm font-bold text-white z-10 flex items-center justify-center">
+<span class="absolute inset-0 bg-primary rounded-full -z-10 scale-90"></span>
+                        5
+                    </span>
+<span class="relative text-sm font-bold text-primary z-10 flex items-center justify-center">
+<span class="absolute inset-0 bg-primary/10 rounded-full -z-10 scale-90"></span>
+                        6
+                    </span>
+<span class="relative text-sm font-bold text-white z-10 flex items-center justify-center">
+<span class="absolute inset-0 bg-primary rounded-full -z-10 scale-90"></span>
+                        7
+                    </span>
+<span class="text-sm font-bold text-on-surface">8</span>
+<span class="text-sm font-bold text-on-surface">9</span>
+<span class="text-sm font-bold text-on-surface">10</span>
+<span class="text-sm font-bold text-on-surface">11</span>
+</div>
+</div>
+</section>
+</main>
+<!-- Sticky Bottom Bar -->
+<footer class="fixed bottom-0 left-0 w-full z-50 bg-white/70 backdrop-blur-2xl px-6 pt-4 pb-8 shadow-[0_-4px_24px_rgba(20,27,44,0.06)]">
+<div class="flex items-center justify-between gap-6 max-w-lg mx-auto">
+<div>
+<p class="text-[10px] font-black text-outline uppercase tracking-widest mb-1">Total Rental (3 Days)</p>
+<div class="flex items-baseline gap-1">
+<span class="text-2xl font-black text-on-surface">Rp 1.050.000</span>
+</div>
+</div>
+<button class="flex-1 bg-gradient-to-br from-primary to-primary-container text-white h-14 rounded-2xl font-headline font-extrabold flex items-center justify-center gap-2 active:scale-[0.98] transition-transform shadow-lg shadow-primary/20" onclick="window.location.href='{{DATA:SCREEN:SCREEN_5}}'">
+                Pesan Sekarang
+                <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+</footer>
+</body></html>

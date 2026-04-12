@@ -1,0 +1,290 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+// ─────────────────────────────────────────────
+// Users (synced from Supabase Auth)
+// ─────────────────────────────────────────────
+model User {
+  id         String   @id @default(uuid())
+  name       String
+  email      String   @unique
+  role       Role     @default(customer)
+  phone      String?
+  is_active  Boolean  @default(true)
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+
+  bookings       Booking[]
+  notifications  Notification[]
+  verified_docs  Document[]      @relation("VerifiedBy")
+  confirmed_pays Payment[]       @relation("ConfirmedBy")
+
+  @@map("users")
+}
+
+enum Role {
+  customer
+  admin
+  owner
+}
+
+// ─────────────────────────────────────────────
+// Vehicles (Armada)
+// ─────────────────────────────────────────────
+model Vehicle {
+  id                        Int           @id @default(autoincrement())
+  name                      String
+  brand                     String
+  model                     String
+  type                      VehicleType
+  year                      Int
+  color                     String
+  transmission              Transmission
+  fuel_type                 FuelType
+  capacity                  Int
+  price_self_drive_per_day  Int
+  price_with_driver_per_day Int           @default(0)
+  has_self_drive_option     Boolean       @default(true)
+  has_driver_option         Boolean       @default(false)
+  status                    VehicleStatus @default(available)
+  image_urls                String[]
+  description               String?
+  plate_number              String?       @unique
+  created_at                DateTime      @default(now())
+  updated_at                DateTime      @updatedAt
+
+  bookings          Booking[]
+  service_logs      VehicleServiceLog[]
+  operational_costs OperationalCost[]
+
+  @@map("vehicles")
+}
+
+enum VehicleType {
+  sedan
+  suv
+  mpv
+  pickup
+}
+
+enum Transmission {
+  manual
+  automatic
+}
+
+enum FuelType {
+  bensin
+  diesel
+  hybrid
+}
+
+enum VehicleStatus {
+  available
+  rented
+  service
+  blocked
+}
+
+// ─────────────────────────────────────────────
+// Bookings (Pemesanan)
+// ─────────────────────────────────────────────
+model Booking {
+  id               Int           @id @default(autoincrement())
+  booking_code     String        @unique
+  user_id          String?
+  vehicle_id       Int
+  guest_name       String?
+  guest_phone      String?
+  guest_email      String?
+  rental_type      RentalType
+  start_date       DateTime
+  end_date         DateTime
+  duration_days    Int
+  total_price      Int
+  pickup_location  String
+  status           BookingStatus @default(pending)
+  rejection_reason String?
+  notes            String?
+  created_at       DateTime      @default(now())
+  updated_at       DateTime      @updatedAt
+
+  user      User?    @relation(fields: [user_id], references: [id])
+  vehicle   Vehicle  @relation(fields: [vehicle_id], references: [id])
+  documents Document[]
+  payments  Payment[]
+
+  @@index([start_date])
+  @@index([status])
+  @@index([vehicle_id, start_date, end_date])
+  @@map("bookings")
+}
+
+enum RentalType {
+  self_drive
+  with_driver
+}
+
+enum BookingStatus {
+  pending
+  approved
+  active
+  completed
+  cancelled
+  rejected
+}
+
+// ─────────────────────────────────────────────
+// Documents (KTP/SIM/Bukti Transfer)
+// ─────────────────────────────────────────────
+model Document {
+  id          Int          @id @default(autoincrement())
+  booking_id  Int
+  type        DocumentType
+  source      DocumentSource
+  file_url    String
+  file_name   String?
+  is_verified Boolean      @default(false)
+  verified_at DateTime?
+  verified_by String?
+  deleted_at  DateTime?
+  created_at  DateTime     @default(now())
+
+  booking     Booking @relation(fields: [booking_id], references: [id])
+  verifier    User?   @relation("VerifiedBy", fields: [verified_by], references: [id])
+
+  @@map("documents")
+}
+
+enum DocumentType {
+  ktp
+  sim
+  bukti_transfer
+}
+
+enum DocumentSource {
+  customer_upload
+  admin_capture
+}
+
+// ─────────────────────────────────────────────
+// Payments
+// ─────────────────────────────────────────────
+model Payment {
+  id             Int           @id @default(autoincrement())
+  booking_id     Int
+  amount         Int
+  payment_method String        @default("bank_transfer")
+  bank_account   String?
+  proof_url      String?
+  status         PaymentStatus @default(pending)
+  confirmed_at   DateTime?
+  confirmed_by   String?
+  notes          String?
+  created_at     DateTime      @default(now())
+
+  booking   Booking @relation(fields: [booking_id], references: [id])
+  confirmer User?   @relation("ConfirmedBy", fields: [confirmed_by], references: [id])
+
+  @@index([confirmed_at])
+  @@map("payments")
+}
+
+enum PaymentStatus {
+  pending
+  confirmed
+  rejected
+}
+
+// ─────────────────────────────────────────────
+// Vehicle Service Logs
+// ─────────────────────────────────────────────
+model VehicleServiceLog {
+  id                Int      @id @default(autoincrement())
+  vehicle_id        Int
+  service_type      String
+  description       String?
+  cost              Int      @default(0)
+  service_date      DateTime
+  odometer_km       Int?
+  next_service_date DateTime?
+  created_at        DateTime @default(now())
+
+  vehicle Vehicle @relation(fields: [vehicle_id], references: [id])
+
+  @@map("vehicle_service_logs")
+}
+
+// ─────────────────────────────────────────────
+// Operational Costs
+// ─────────────────────────────────────────────
+model OperationalCost {
+  id          Int      @id @default(autoincrement())
+  vehicle_id  Int?
+  cost_type   CostType
+  description String?
+  amount      Int
+  date        DateTime
+  created_at  DateTime @default(now())
+
+  vehicle Vehicle? @relation(fields: [vehicle_id], references: [id])
+
+  @@map("operational_costs")
+}
+
+enum CostType {
+  bbm
+  asuransi
+  pajak
+  lainnya
+}
+
+// ─────────────────────────────────────────────
+// Daily Revenue Summary (agregat harian)
+// ─────────────────────────────────────────────
+model DailyRevenueSummary {
+  id              Int      @id @default(autoincrement())
+  summary_date    DateTime @unique
+  total_revenue   Int      @default(0)
+  total_bookings  Int      @default(0)
+  active_vehicles Int      @default(0)
+  idle_vehicles   Int      @default(0)
+  created_at      DateTime @default(now())
+
+  @@map("daily_revenue_summary")
+}
+
+// ─────────────────────────────────────────────
+// Notifications
+// ─────────────────────────────────────────────
+model Notification {
+  id         Int      @id @default(autoincrement())
+  user_id    String
+  type       String
+  message    String
+  is_read    Boolean  @default(false)
+  created_at DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [id])
+
+  @@map("notifications")
+}
+
+// ─────────────────────────────────────────────
+// App Settings (untuk rekening bank, dll)
+// ─────────────────────────────────────────────
+model AppSetting {
+  id         Int      @id @default(autoincrement())
+  key        String   @unique
+  value      String
+  updated_at DateTime @updatedAt
+
+  @@map("app_settings")
+}
