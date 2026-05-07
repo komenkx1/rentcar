@@ -1,0 +1,198 @@
+import { MOCK_VEHICLES } from "./vehicles";
+
+export interface MockBooking {
+  id: number;
+  booking_code: string;
+  user_id: string | null;
+  vehicle_id: number;
+  guest_name: string;
+  guest_phone: string;
+  guest_email: string;
+  rental_type: "self_drive" | "with_driver";
+  start_date: Date;
+  end_date: Date;
+  duration_days: number;
+  total_price: number;
+  pickup_location: string;
+  status: "pending" | "approved" | "active" | "completed" | "cancelled" | "rejected";
+  rejection_reason: string | null;
+  notes: string | null;
+  created_at: Date;
+  updated_at: Date;
+  vehicle: typeof MOCK_VEHICLES[0];
+}
+
+function getVehicle(id: number) {
+  return MOCK_VEHICLES.find((v) => v.id === id) ?? MOCK_VEHICLES[0];
+}
+
+export const MOCK_BOOKINGS: MockBooking[] = [
+  {
+    id: 1,
+    booking_code: "RCM-2025-A1B2",
+    user_id: null,
+    vehicle_id: 1,
+    guest_name: "Andi Prasetyo",
+    guest_phone: "081234567890",
+    guest_email: "andi@email.com",
+    rental_type: "self_drive",
+    start_date: new Date("2025-12-10"),
+    end_date: new Date("2025-12-12"),
+    duration_days: 3,
+    total_price: 1050000,
+    pickup_location: "Bandara Soekarno-Hatta, Terminal 3",
+    status: "pending",
+    rejection_reason: null,
+    notes: "Tolong siapkan mobil di pintu kedatangan A",
+    created_at: new Date("2025-12-08"),
+    updated_at: new Date("2025-12-08"),
+    vehicle: getVehicle(1),
+  },
+  {
+    id: 2,
+    booking_code: "RCM-2025-C3D4",
+    user_id: null,
+    vehicle_id: 2,
+    guest_name: "Maya Wardani",
+    guest_phone: "082345678901",
+    guest_email: "maya@email.com",
+    rental_type: "self_drive",
+    start_date: new Date("2025-12-01"),
+    end_date: new Date("2025-12-05"),
+    duration_days: 5,
+    total_price: 4000000,
+    pickup_location: "Jl. Sudirman No. 100, Jakarta Pusat",
+    status: "approved",
+    rejection_reason: null,
+    notes: null,
+    created_at: new Date("2025-11-28"),
+    updated_at: new Date("2025-11-29"),
+    vehicle: getVehicle(2),
+  },
+  {
+    id: 3,
+    booking_code: "RCM-2025-E5F6",
+    user_id: "user-1",
+    vehicle_id: 5,
+    guest_name: "Budi Hartono",
+    guest_phone: "083456789012",
+    guest_email: "budi@email.com",
+    rental_type: "with_driver",
+    start_date: new Date("2025-11-25"),
+    end_date: new Date("2025-11-30"),
+    duration_days: 6,
+    total_price: 10800000,
+    pickup_location: "Hotel Mulia, Senayan",
+    status: "active",
+    rejection_reason: null,
+    notes: "Supir mohon stand by di lobby hotel",
+    created_at: new Date("2025-11-20"),
+    updated_at: new Date("2025-11-25"),
+    vehicle: getVehicle(5),
+  },
+  {
+    id: 4,
+    booking_code: "RCM-2025-G7H8",
+    user_id: "user-2",
+    vehicle_id: 1,
+    guest_name: "Citra Lestari",
+    guest_phone: "084567890123",
+    guest_email: "citra@email.com",
+    rental_type: "with_driver",
+    start_date: new Date("2025-11-10"),
+    end_date: new Date("2025-11-12"),
+    duration_days: 3,
+    total_price: 1500000,
+    pickup_location: "Stasiun Gambir, Jakarta",
+    status: "completed",
+    rejection_reason: null,
+    notes: null,
+    created_at: new Date("2025-11-05"),
+    updated_at: new Date("2025-11-12"),
+    vehicle: getVehicle(1),
+  },
+  {
+    id: 5,
+    booking_code: "RCM-2025-I9J0",
+    user_id: null,
+    vehicle_id: 3,
+    guest_name: "Dimas Saputra",
+    guest_phone: "085678901234",
+    guest_email: "dimas@email.com",
+    rental_type: "self_drive",
+    start_date: new Date("2025-11-15"),
+    end_date: new Date("2025-11-16"),
+    duration_days: 2,
+    total_price: 900000,
+    pickup_location: "Apartemen Taman Anggrek",
+    status: "cancelled",
+    rejection_reason: null,
+    notes: "Batal karena perubahan rencana",
+    created_at: new Date("2025-11-12"),
+    updated_at: new Date("2025-11-14"),
+    vehicle: getVehicle(3),
+  },
+  {
+    id: 6,
+    booking_code: "RCM-2025-K1L2",
+    user_id: null,
+    vehicle_id: 8,
+    guest_name: "Eka Pratama",
+    guest_phone: "086789012345",
+    guest_email: "eka@email.com",
+    rental_type: "self_drive",
+    start_date: new Date("2025-10-20"),
+    end_date: new Date("2025-10-22"),
+    duration_days: 3,
+    total_price: 1650000,
+    pickup_location: "Mall Kelapa Gading",
+    status: "completed",
+    rejection_reason: null,
+    notes: null,
+    created_at: new Date("2025-10-15"),
+    updated_at: new Date("2025-10-22"),
+    vehicle: getVehicle(8),
+  },
+  {
+    id: 7,
+    booking_code: "RCM-2025-M3N4",
+    user_id: "user-1",
+    vehicle_id: 12,
+    guest_name: "Budi Hartono",
+    guest_phone: "083456789012",
+    guest_email: "budi@email.com",
+    rental_type: "with_driver",
+    start_date: new Date("2025-10-01"),
+    end_date: new Date("2025-10-03"),
+    duration_days: 3,
+    total_price: 4800000,
+    pickup_location: "Bandara Halim Perdanakusuma",
+    status: "rejected",
+    rejection_reason: "Mobil sedang dalam perbaikan",
+    notes: null,
+    created_at: new Date("2025-09-28"),
+    updated_at: new Date("2025-09-29"),
+    vehicle: getVehicle(12),
+  },
+  {
+    id: 8,
+    booking_code: "RCM-2025-O5P6",
+    user_id: "user-2",
+    vehicle_id: 9,
+    guest_name: "Citra Lestari",
+    guest_phone: "084567890123",
+    guest_email: "citra@email.com",
+    rental_type: "self_drive",
+    start_date: new Date("2025-12-22"),
+    end_date: new Date("2025-12-26"),
+    duration_days: 5,
+    total_price: 4500000,
+    pickup_location: "Rest Area KM 57, Tol Cipularang",
+    status: "approved",
+    rejection_reason: null,
+    notes: "Rencana liburan akhir tahun ke Bandung",
+    created_at: new Date("2025-12-05"),
+    updated_at: new Date("2025-12-06"),
+    vehicle: getVehicle(9),
+  },
+];

@@ -1,7 +1,7 @@
-import Image from "next/image";
 import Link from "next/link";
 import { cn, formatRupiah, vehicleTypeLabels, transmissionLabels } from "@/lib/utils";
 import { StatusBadge } from "@/components/shared/StatusBadge";
+import { VehicleImage } from "@/components/shared/VehicleImage";
 
 export interface VehicleCardData {
   id: number;
@@ -29,24 +29,24 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
     : vehicle.price_with_driver_per_day;
 
   const isAvailable = vehicle.status === "available";
-  const mainImage = vehicle.image_urls?.[0] || "/placeholder-car.jpg";
+  const mainImage = vehicle.image_urls?.[0];
 
   return (
     <article
       className={cn(
-        "card-hover overflow-hidden group",
+        "card-hover group flex h-full flex-col overflow-hidden border border-outline-variant/15",
         !isAvailable && "opacity-80",
         className
       )}
     >
       {/* Image */}
-      <div className="relative h-52 overflow-hidden bg-surface-container-low">
-        <Image
+      <div className="relative aspect-[16/10] w-full overflow-hidden bg-surface-container-low">
+        <VehicleImage
           src={mainImage}
-          alt={vehicle.name}
-          fill
-          className="object-cover group-hover:scale-105 transition-transform duration-700"
-          sizes="(max-width: 768px) 100vw, 50vw"
+          alt={`${vehicle.brand} ${vehicle.name}`}
+          vehicleName={vehicle.name}
+          imageClassName="transition-transform duration-700 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
         />
 
         {/* Status Badge */}
@@ -56,7 +56,7 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
       </div>
 
       {/* Content */}
-      <div className="p-5">
+      <div className="flex flex-1 flex-col p-5">
         {/* Name & Type */}
         <div className="flex items-start justify-between gap-2 mb-3">
           <div>
@@ -81,15 +81,19 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
         </div>
 
         {/* Specs */}
-        <div className="flex items-center gap-4 text-on-surface-variant">
+        <div className="flex flex-wrap items-center gap-3 text-on-surface-variant">
           <span className="flex items-center gap-1">
             <span className="material-symbols-outlined text-[16px]">group</span>
             <span className="text-xs font-semibold">{vehicle.capacity} Kursi</span>
           </span>
+          <span className="flex items-center gap-1">
+            <span className="material-symbols-outlined text-[16px]">shield</span>
+            <span className="text-xs font-semibold">Terawat</span>
+          </span>
         </div>
 
         {/* Price + CTA */}
-        <div className="mt-5 pt-5 border-t border-outline-variant/15">
+        <div className="mt-auto pt-5 border-t border-outline-variant/15">
           <div className="flex items-center justify-between mb-4">
             <div>
               <p className="text-[10px] uppercase tracking-widest text-outline font-bold mb-0.5">

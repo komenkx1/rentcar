@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Premium SUV rental car illustration</title>
+  <desc id="desc">A polished gradient vehicle placeholder for SUV cars.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#002109"/><stop offset=".55" stop-color="#003180"/><stop offset="1" stop-color="#f59e0b"/></linearGradient><linearGradient id="car" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#dcfce7"/></linearGradient></defs>
+  <rect width="1200" height="750" fill="url(#bg)"/><circle cx="1000" cy="140" r="180" fill="#fff" opacity=".12"/><circle cx="190" cy="660" r="250" fill="#fff" opacity=".09"/>
+  <path d="M224 431h682c60 0 109 44 118 103l9 59H165l16-81c10-50 43-81 43-81Z" fill="#001848" opacity=".32"/>
+  <path d="M226 413h680c63 0 112 45 123 107l9 53H160l18-84c10-46 27-76 48-76Z" fill="url(#car)"/>
+  <path d="M388 284h355c83 0 139 56 169 129H285c23-77 55-129 103-129Z" fill="#f8fafc"/>
+  <path d="M426 317h145v86H333c20-54 50-86 93-86Zm178 0h132c58 0 99 36 126 86H604v-86Z" fill="#86efac" opacity=".9"/>
+  <circle cx="345" cy="576" r="82" fill="#0f172a"/><circle cx="345" cy="576" r="38" fill="#bbf7d0"/><circle cx="864" cy="576" r="82" fill="#0f172a"/><circle cx="864" cy="576" r="38" fill="#bbf7d0"/>
+  <text x="600" y="165" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800" text-anchor="middle">Luxury SUV</text>
+</svg>

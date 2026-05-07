@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Premium pickup rental car illustration</title>
+  <desc id="desc">A polished gradient vehicle placeholder for pickup cars.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#3b485a"/><stop offset=".55" stop-color="#003180"/><stop offset="1" stop-color="#f97316"/></linearGradient><linearGradient id="car" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#fed7aa"/></linearGradient></defs>
+  <rect width="1200" height="750" fill="url(#bg)"/><circle cx="1015" cy="125" r="185" fill="#fff" opacity=".12"/><circle cx="165" cy="655" r="230" fill="#fff" opacity=".09"/>
+  <path d="M191 444h823c42 0 79 27 92 67l23 70H130l22-78c10-36 21-59 39-59Z" fill="#001848" opacity=".3"/>
+  <path d="M194 426h814c44 0 82 29 96 71l23 68H132l24-83c10-35 21-56 38-56Z" fill="url(#car)"/>
+  <path d="M334 303h239c64 0 110 51 133 123H246c22-76 50-123 88-123Z" fill="#fff7ed"/>
+  <path d="M367 334h91v80H293c19-52 42-80 74-80Zm120 0h78c38 0 68 32 88 80H487v-80Z" fill="#fdba74" opacity=".9"/>
+  <rect x="704" y="354" width="274" height="72" rx="18" fill="#fff7ed"/>
+  <circle cx="324" cy="568" r="76" fill="#0f172a"/><circle cx="324" cy="568" r="35" fill="#fed7aa"/><circle cx="888" cy="568" r="76" fill="#0f172a"/><circle cx="888" cy="568" r="35" fill="#fed7aa"/>
+  <text x="600" y="165" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800" text-anchor="middle">Utility Pickup</text>
+</svg>

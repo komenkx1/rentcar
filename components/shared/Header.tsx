@@ -8,6 +8,7 @@ const desktopNavItems = [
   { href: "/", label: "Katalog" },
   { href: "/wishlist", label: "Tersimpan" },
   { href: "/status", label: "Pesanan" },
+  { href: "/promo", label: "Promo" },
   { href: "/bantuan", label: "Bantuan" },
 ];
 

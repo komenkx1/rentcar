@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Premium sedan rental car illustration</title>
+  <desc id="desc">A polished gradient vehicle placeholder for sedan cars.</desc>
+  <defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#111827"/><stop offset=".55" stop-color="#003180"/><stop offset="1" stop-color="#38bdf8"/></linearGradient><linearGradient id="car" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset="1" stop-color="#e0f2fe"/></linearGradient></defs>
+  <rect width="1200" height="750" fill="url(#bg)"/><circle cx="1040" cy="120" r="200" fill="#fff" opacity=".1"/><circle cx="140" cy="620" r="210" fill="#fff" opacity=".09"/>
+  <path d="M214 471h761c36 0 66 24 76 58l17 58H142l24-65c10-29 27-51 48-51Z" fill="#001848" opacity=".3"/>
+  <path d="M217 455h750c42 0 80 29 91 70l13 48H144l25-68c11-31 25-50 48-50Z" fill="url(#car)"/>
+  <path d="M411 333h280c85 0 159 48 209 122H292c33-77 75-122 119-122Z" fill="#f8fafc"/>
+  <path d="M438 360h129v83H334c27-54 60-83 104-83Zm160 0h91c63 0 112 35 154 83H598v-83Z" fill="#7dd3fc" opacity=".9"/>
+  <circle cx="330" cy="576" r="70" fill="#0f172a"/><circle cx="330" cy="576" r="32" fill="#bae6fd"/><circle cx="869" cy="576" r="70" fill="#0f172a"/><circle cx="869" cy="576" r="32" fill="#bae6fd"/>
+  <text x="600" y="165" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800" text-anchor="middle">Executive Sedan</text>
+</svg>

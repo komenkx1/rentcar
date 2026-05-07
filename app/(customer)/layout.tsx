@@ -7,9 +7,9 @@ export default function CustomerLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-surface">
+    <div className="min-h-screen overflow-x-hidden bg-surface">
       <Header showNotification showAccount />
-      <main className="pt-20 pb-24 md:pb-12 max-w-7xl mx-auto md:px-4">
+      <main className="pt-20 pb-28 md:pb-12">
         {children}
       </main>
       <BottomNav />

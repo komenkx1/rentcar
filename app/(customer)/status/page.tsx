@@ -2,6 +2,7 @@ import Link from "next/link";
 import prisma from "@/lib/prisma";
 import { formatRupiah, formatDate } from "@/lib/utils";
 import { StatusBadge } from "@/components/shared/StatusBadge";
+import { VehicleImage } from "@/components/shared/VehicleImage";
 
 interface PageProps {
   searchParams: {
@@ -88,19 +89,19 @@ export default async function OrderHistoryPage({ searchParams }: PageProps) {
                 <article className="bg-surface-container rounded-2xl p-4 border border-outline-variant/20 shadow-sm active:scale-[0.98] transition-transform">
                   <div className="flex justify-between items-center mb-3">
                     <p className="text-xs font-bold text-on-surface-variant">{formatDate(booking.created_at)}</p>
-                    <StatusBadge status={booking.status as any} />
+                    <StatusBadge status={booking.status as "pending" | "approved" | "active" | "completed" | "cancelled" | "rejected"} />
                   </div>
                   
                   <div className="flex gap-4 items-center">
                     <div className="w-16 h-16 rounded-xl bg-surface-container-low flex-shrink-0 relative overflow-hidden">
-                      <img 
-                        src={booking.vehicle.image_urls[0] || "/placeholder-car.jpg"} 
-                        alt="Vehicle" 
-                        className="object-cover w-full h-full"
+                      <VehicleImage
+                        src={booking.vehicle.image_urls[0]}
+                        alt={`${booking.vehicle.brand} ${booking.vehicle.name}`}
+                        vehicleName={booking.vehicle.name}
                       />
                     </div>
                     <div>
-                      <h3 className="font-bold text-on-surface text-sm mb-1">{booking.vehicle.brand} {booking.vehicle.model}</h3>
+                      <h3 className="font-bold text-on-surface text-sm mb-1">{booking.vehicle.brand} {booking.vehicle.name}</h3>
                       <p className="text-xs text-on-surface-variant font-medium">Inv: {booking.booking_code}</p>
                       <p className="text-sm font-bold text-primary mt-1">{formatRupiah(booking.total_price)}</p>
                     </div>

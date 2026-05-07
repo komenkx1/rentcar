@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-labelledby="title desc">
+  <title id="title">Premium MPV rental car illustration</title>
+  <desc id="desc">A polished gradient vehicle placeholder for MPV cars.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop offset="0" stop-color="#003180"/><stop offset="0.58" stop-color="#0046b0"/><stop offset="1" stop-color="#f59e0b"/></linearGradient>
+    <linearGradient id="car" x1="0" x2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#dbeafe"/></linearGradient>
+  </defs>
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <circle cx="990" cy="120" r="180" fill="#fff" opacity=".12"/>
+  <circle cx="170" cy="650" r="220" fill="#fff" opacity=".10"/>
+  <path d="M260 435h650c54 0 98 40 105 93l8 60H176l13-67c10-50 39-86 71-86Z" fill="#001848" opacity=".28"/>
+  <path d="M256 426h650c54 0 98 40 105 93l7 54H179l12-61c10-50 36-86 65-86Z" fill="url(#car)"/>
+  <path d="M386 296h345c76 0 136 61 163 130H286c24-74 57-130 100-130Z" fill="#eff6ff"/>
+  <path d="M428 326h143v92H332c24-53 50-92 96-92Zm175 0h121c52 0 96 37 123 92H603v-92Z" fill="#60a5fa" opacity=".9"/>
+  <circle cx="344" cy="572" r="72" fill="#111827"/><circle cx="344" cy="572" r="34" fill="#bfdbfe"/>
+  <circle cx="850" cy="572" r="72" fill="#111827"/><circle cx="850" cy="572" r="34" fill="#bfdbfe"/>
+  <text x="600" y="165" fill="#fff" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800" text-anchor="middle">Premium MPV</text>
+</svg>

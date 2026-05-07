@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import prisma from "@/lib/prisma";
@@ -10,6 +9,7 @@ import {
   cn,
 } from "@/lib/utils";
 import { StatusBadge } from "@/components/shared/StatusBadge";
+import { VehicleImage } from "@/components/shared/VehicleImage";
 
 interface PageProps {
   params: {
@@ -33,13 +33,13 @@ export default async function VehicleDetailPage({ params }: PageProps) {
   }
 
   const isAvailable = vehicle.status === "available";
-  const mainImage = vehicle.image_urls?.[0] || "/placeholder-car.jpg";
+  const mainImage = vehicle.image_urls?.[0];
 
   return (
     <div className="animate-fade-in pb-24 max-w-7xl mx-auto md:pt-4">
       
       {/* Desktop Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+      <div className="grid grid-cols-1 gap-8 px-0 md:px-5 lg:grid-cols-12 lg:px-8">
         
         {/* Left Column (Image & Content) */}
         <div className="lg:col-span-8">
@@ -48,11 +48,10 @@ export default async function VehicleDetailPage({ params }: PageProps) {
             Menggunakan margin negatif pada mobile agar menempel di atas MobileHeader, tapi normal di desktop
           */}
           <section className="-mt-16 md:mt-0 w-full md:rounded-3xl overflow-hidden h-[40vh] md:h-[60vh] min-h-[300px] relative bg-surface-container shadow-sm border border-outline-variant/10">
-            <Image
+            <VehicleImage
               src={mainImage}
-              alt={vehicle.name}
-              fill
-              className="object-cover"
+              alt={`${vehicle.brand} ${vehicle.name}`}
+              vehicleName={vehicle.name}
               priority
               sizes="(max-width: 768px) 100vw, 66vw"
             />
