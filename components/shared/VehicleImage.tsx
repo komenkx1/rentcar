@@ -6,12 +6,16 @@ import { cn } from "@/lib/utils";
 
 interface VehicleImageFallbackProps {
   vehicleName: string;
+  brand?: string;
   className?: string;
 }
 
-interface VehicleImageProps extends VehicleImageFallbackProps {
+interface VehicleImageProps {
   src?: string | null;
   alt?: string;
+  vehicleName: string;
+  brand?: string;
+  className?: string;
   imageClassName?: string;
   sizes?: string;
   priority?: boolean;
@@ -19,10 +23,12 @@ interface VehicleImageProps extends VehicleImageFallbackProps {
 
 function hasUsableImage(src?: string | null): src is string {
   if (!src) return false;
-  return !src.includes("placeholder-car");
+  // Filter out placeholder URLs
+  const blockedPatterns = ["placeholder-car", "via.placeholder.com"];
+  return !blockedPatterns.some((pattern) => src.includes(pattern));
 }
 
-export function VehicleImageFallback({ vehicleName, className }: VehicleImageFallbackProps) {
+export function VehicleImageFallback({ vehicleName, brand, className }: VehicleImageFallbackProps) {
   return (
     <div
       className={cn(
@@ -38,6 +44,9 @@ export function VehicleImageFallback({ vehicleName, className }: VehicleImageFal
         <span className="max-w-[16rem] text-sm font-extrabold uppercase tracking-[0.18em] text-white/95">
           {vehicleName}
         </span>
+        {brand && (
+          <span className="mt-1 text-xs font-medium text-white/70">{brand}</span>
+        )}
       </div>
     </div>
   );
@@ -47,26 +56,39 @@ export function VehicleImage({
   src,
   alt,
   vehicleName,
+  brand,
   className,
   imageClassName,
   sizes = "(max-width: 768px) 100vw, 50vw",
   priority = false,
 }: VehicleImageProps) {
   const [failed, setFailed] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   if (!hasUsableImage(src) || failed) {
-    return <VehicleImageFallback vehicleName={vehicleName} className={className} />;
+    return <VehicleImageFallback vehicleName={vehicleName} brand={brand} className={className} />;
   }
 
   return (
-    <Image
-      src={src}
-      alt={alt || `${vehicleName} rental car`}
-      fill
-      priority={priority}
-      onError={() => setFailed(true)}
-      className={cn("object-cover", imageClassName)}
-      sizes={sizes}
-    />
+    <div className={cn("relative h-full w-full", className)}>
+      {isLoading && (
+        <div className="absolute inset-0 flex items-center justify-center bg-surface-container animate-pulse">
+          <span className="material-symbols-outlined text-3xl text-outline/30">directions_car</span>
+        </div>
+      )}
+      <Image
+        src={src}
+        alt={alt || `${vehicleName} rental car`}
+        fill
+        priority={priority}
+        onLoad={() => setIsLoading(false)}
+        onError={() => {
+          setFailed(true);
+          setIsLoading(false);
+        }}
+        className={cn("object-cover transition-opacity duration-300", imageClassName, isLoading ? "opacity-0" : "opacity-100")}
+        sizes={sizes}
+      />
+    </div>
   );
 }

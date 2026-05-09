@@ -52,6 +52,7 @@ export default async function VehicleDetailPage({ params }: PageProps) {
               src={mainImage}
               alt={`${vehicle.brand} ${vehicle.name}`}
               vehicleName={vehicle.name}
+              brand={vehicle.brand}
               priority
               sizes="(max-width: 768px) 100vw, 66vw"
             />

@@ -45,6 +45,7 @@ export function VehicleCard({ vehicle, className }: VehicleCardProps) {
           src={mainImage}
           alt={`${vehicle.brand} ${vehicle.name}`}
           vehicleName={vehicle.name}
+          brand={vehicle.brand}
           imageClassName="transition-transform duration-700 group-hover:scale-105"
           sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 25vw"
         />
