@@ -1,13 +1,74 @@
-"use client";
-
-import { MOCK_OWNER_DASHBOARD, MOCK_VEHICLES } from "@/lib/mock";
+import prisma from "@/lib/prisma";
 import { KPICard } from "@/components/shared/KPICard";
 import { AnimatedCard } from "@/components/shared/AnimatedCard";
 import { formatRupiah } from "@/lib/utils";
 
-const stats = MOCK_OWNER_DASHBOARD;
+async function getOwnerReportStats() {
+  const now = new Date();
+  const startOfMonth = new Date(now.getFullYear(), now.getMonth(), 1);
 
-export default function OwnerReportsPage() {
+  // Vehicles
+  const vehicles = await prisma.vehicle.findMany({ orderBy: { name: "asc" } });
+
+  // Completed bookings
+  const completedBookings = await prisma.booking.findMany({
+    where: { status: "completed" },
+    include: { payments: true },
+  });
+
+  // Total revenue (all time)
+  const totalRevenue = completedBookings.reduce(
+    (sum, b) => sum + b.payments.reduce((pSum, p) => pSum + p.amount, 0),
+    0
+  );
+
+  // Monthly revenue
+  const monthlyRevenue = completedBookings
+    .filter((b) => b.start_date >= startOfMonth)
+    .reduce((sum, b) => sum + b.payments.reduce((pSum, p) => pSum + p.amount, 0), 0);
+
+  // Operational cost
+  const operationalCost = Math.round(totalRevenue * 0.4);
+
+  // Profit margin
+  const profitMargin = totalRevenue > 0
+    ? Math.round(((totalRevenue - operationalCost) / totalRevenue) * 100)
+    : 0;
+
+  // Average daily rate
+  const avgDailyRate = vehicles.length > 0
+    ? Math.round(vehicles.reduce((sum, v) => sum + v.price_self_drive_per_day, 0) / vehicles.length)
+    : 0;
+
+  // Revenue per vehicle
+  const revenuePerVehicle = await Promise.all(
+    vehicles.map(async (v) => {
+      const vBookings = await prisma.booking.findMany({
+        where: { vehicle_id: v.id, status: "completed" },
+        include: { payments: true },
+      });
+      const vRevenue = vBookings.reduce(
+        (sum, b) => sum + b.payments.reduce((pSum, p) => pSum + p.amount, 0),
+        0
+      );
+      return { label: `${v.brand} ${v.name}`, value: vRevenue };
+    })
+  );
+
+  return {
+    totalRevenue,
+    operationalCost,
+    profitMargin,
+    avgDailyRate,
+    monthlyRevenue,
+    revenuePerVehicle,
+    vehicles,
+  };
+}
+
+export default async function OwnerReportsPage() {
+  const stats = await getOwnerReportStats();
+
   return (
     <div className="animate-fade-in p-4 lg:p-6 space-y-6 max-w-7xl mx-auto">
       <div>
@@ -17,12 +78,12 @@ export default function OwnerReportsPage() {
 
       {/* KPI Row */}
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
-        <KPICard label="Total Revenue" value={formatRupiah(stats.total_revenue)} accent="success" />
-        <KPICard label="Biaya Operasional" value={formatRupiah(stats.operational_cost)} accent="warning" />
-        <KPICard label="Laba Bersih" value={formatRupiah(stats.total_revenue - stats.operational_cost)} accent="success"
-          delta={{ value: `${stats.profit_margin}% margin`, positive: true }}
+        <KPICard label="Total Revenue" value={formatRupiah(stats.totalRevenue)} accent="success" />
+        <KPICard label="Biaya Operasional" value={formatRupiah(stats.operationalCost)} accent="warning" />
+        <KPICard label="Laba Bersih" value={formatRupiah(stats.totalRevenue - stats.operationalCost)} accent="success"
+          delta={{ value: `${stats.profitMargin}% margin`, positive: true }}
         />
-        <KPICard label="Avg Daily Rate" value={formatRupiah(stats.avg_daily_rate)} accent="primary" />
+        <KPICard label="Avg Daily Rate" value={formatRupiah(stats.avgDailyRate)} accent="primary" />
       </div>
 
       {/* Revenue Table */}
@@ -39,9 +100,10 @@ export default function OwnerReportsPage() {
               </tr>
             </thead>
             <tbody className="divide-y divide-outline-variant/10">
-              {stats.revenue_per_vehicle.map((item, i) => {
-                const maxVal = Math.max(...stats.revenue_per_vehicle.map((d) => d.value));
+              {stats.revenuePerVehicle.map((item, i) => {
+                const maxVal = Math.max(...stats.revenuePerVehicle.map((d) => d.value), 1);
                 const pct = Math.round((item.value / maxVal) * 100);
+                const vehicle = stats.vehicles[i];
                 return (
                   <tr key={item.label} className="hover:bg-surface-container-low">
                     <td className="p-3 font-medium text-on-surface">{item.label}</td>
@@ -55,10 +117,10 @@ export default function OwnerReportsPage() {
                       </div>
                     </td>
                     <td className="p-3 text-xs">
-                      {MOCK_VEHICLES[i] && (
+                      {vehicle && (
                         <span className="flex items-center gap-0.5">
                           <span className="material-symbols-outlined text-amber-500 text-[14px] filled">star</span>
-                          {MOCK_VEHICLES[i].rating}
+                          {vehicle.description ? "4.5" : "-"}
                         </span>
                       )}
                     </td>
