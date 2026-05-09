@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 
+# migration prompt
+rentcar-migrate-selfhosted-postgres-minio-prompt.md
+
 # vercel
 .vercel
 
