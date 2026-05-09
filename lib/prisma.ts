@@ -1,4 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import { PrismaPg } from "@prisma/adapter-pg";
+import { Pool } from "pg";
 import { MOCK_VEHICLES, MOCK_BOOKINGS, MOCK_USERS, MOCK_PAYMENTS } from "@/lib/mock";
 
 const MOCK_DB = process.env.NEXT_PUBLIC_MOCK_DB === "true";
@@ -115,6 +117,18 @@ function createMockPrisma(): PrismaClient {
   return new Proxy({} as PrismaClient, handler) as PrismaClient;
 }
 
+function createPrismaClient(): PrismaClient {
+  const pool = new Pool({
+    connectionString: process.env.DATABASE_URL,
+  });
+  const adapter = new PrismaPg(pool);
+
+  return new PrismaClient({
+    adapter,
+    log: process.env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
+  });
+}
+
 let prisma: PrismaClient;
 
 if (MOCK_DB) {
@@ -124,11 +138,7 @@ if (MOCK_DB) {
     prisma: PrismaClient | undefined;
   };
 
-  prisma =
-    globalForPrisma.prisma ??
-    new PrismaClient({
-      log: process.env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
-    });
+  prisma = globalForPrisma.prisma ?? createPrismaClient();
 
   if (process.env.NODE_ENV !== "production") {
     globalForPrisma.prisma = prisma;

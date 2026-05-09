@@ -1,6 +1,13 @@
 import { PrismaClient } from '@prisma/client'
+import { PrismaPg } from '@prisma/adapter-pg'
+import { Pool } from 'pg'
 
-const prisma = new PrismaClient()
+// Initialize PrismaPg adapter for Prisma v7
+const pool = new Pool({
+  connectionString: process.env.DATABASE_URL,
+})
+const adapter = new PrismaPg(pool)
+const prisma = new PrismaClient({ adapter })
 
 // Helper: generate booking code
 function generateBookingCode(): string {
