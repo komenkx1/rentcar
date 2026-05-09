@@ -18,6 +18,20 @@ const nextConfig = {
         protocol: "https",
         hostname: "pub-**.r2.dev",
       },
+      // MinIO/S3-compatible storage
+      {
+        protocol: "http",
+        hostname: "localhost",
+        port: "9000",
+      },
+      {
+        protocol: "https",
+        hostname: "*.s3.amazonaws.com",
+      },
+      {
+        protocol: "https",
+        hostname: "*.s3.us-east-1.amazonaws.com",
+      },
     ],
   },
 };
