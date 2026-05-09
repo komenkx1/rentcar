@@ -1,6 +1,4 @@
 import { PrismaClient } from "@prisma/client";
-import { Pool } from 'pg';
-import { PrismaPg } from '@prisma/adapter-pg';
 import { MOCK_VEHICLES, MOCK_BOOKINGS, MOCK_USERS, MOCK_PAYMENTS } from "@/lib/mock";
 
 const MOCK_DB = process.env.NEXT_PUBLIC_MOCK_DB === "true";
@@ -126,11 +124,11 @@ if (MOCK_DB) {
     prisma: PrismaClient | undefined;
   };
 
-  const connectionString = `${process.env.DATABASE_URL}`;
-  const pool = new Pool({ connectionString });
-  const adapter = new PrismaPg(pool);
-
-  prisma = globalForPrisma.prisma ?? new PrismaClient({ adapter });
+  prisma =
+    globalForPrisma.prisma ??
+    new PrismaClient({
+      log: process.env.NODE_ENV === "development" ? ["query", "error", "warn"] : ["error"],
+    });
 
   if (process.env.NODE_ENV !== "production") {
     globalForPrisma.prisma = prisma;
