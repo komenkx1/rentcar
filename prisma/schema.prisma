@@ -10,7 +10,7 @@ datasource db {
 }
 
 // ─────────────────────────────────────────────
-// Users (synced from Supabase Auth)
+// Users
 // ─────────────────────────────────────────────
 model User {
   id         String   @id @default(uuid())
@@ -56,6 +56,7 @@ model Vehicle {
   has_driver_option         Boolean       @default(false)
   status                    VehicleStatus @default(available)
   image_urls                String[]
+  image_keys                String[]      @default([])
   description               String?
   plate_number              String?       @unique
   created_at                DateTime      @default(now())
@@ -150,6 +151,7 @@ model Document {
   type        DocumentType
   source      DocumentSource
   file_url    String
+  file_key    String?
   file_name   String?
   is_verified Boolean      @default(false)
   verified_at DateTime?
@@ -184,6 +186,7 @@ model Payment {
   payment_method String        @default("bank_transfer")
   bank_account   String?
   proof_url      String?
+  proof_key      String?
   status         PaymentStatus @default(pending)
   confirmed_at   DateTime?
   confirmed_by   String?
